@@ -36,3 +36,11 @@ builder.Services.AddDbContext<InkodoContext>(options =>
     string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
+// Codigo de archivo DbContext
+public class (NombreArchivo)Context : DbContext
+    {
+        public DbAppContext(DbContextOptions<(NombreArchivo)Context> options) : base(options)
+        {
+        }
+    }
