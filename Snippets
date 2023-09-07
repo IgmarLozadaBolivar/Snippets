@@ -24,8 +24,15 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
 </ItemGroup>
 
-// Conexion base de datos
+// Conexion base de datos en archivo appsettings.json
 "ConnectionStrings": {
     "ConexSqlServer": "Data Source=localhost\\sqlexpress;Inital Catalog=Db;Integrate Security=true",
     "ConexMySql": "Server=localhost;User=root;Database=Tokens;Password=1122809631;"
   },
+
+// Conexion base de datos en archivo Program.cs
+builder.Services.AddDbContext<InkodoContext>(options =>
+{
+    string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
